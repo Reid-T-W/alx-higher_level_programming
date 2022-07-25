@@ -8,7 +8,7 @@ class Rectangle:
         '''Instantiation with optional width and height'''
         self.height = height
         self.width = width
-    
+
     def __str__(self):
         '''__str___'''
         shape = ""
@@ -16,9 +16,9 @@ class Rectangle:
             return shape
         for row in range(self.__height):
             for col in range(self.__width):
-                shape+="#"
+                shape += "#"
             if (row != self.height - 1):
-                shape+="\n"
+                shape += "\n"
         return shape
 
     @property
