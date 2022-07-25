@@ -11,7 +11,7 @@ class Rectangle:
 
     def __repr__(self):
         '''__retr__'''
-        return f"Rectangle({self.__width},{self.__height})"
+        return "Rectangle("+str(self.__width)+", "+str(self.__height)+")"
 
     def __str__(self):
         '''__str___'''
