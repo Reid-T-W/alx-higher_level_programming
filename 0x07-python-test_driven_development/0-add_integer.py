@@ -8,9 +8,11 @@ Functions
 add_integer(a, b=98)
     Adds two integers
 """
+
+
 def add_integer(a, b=98):
     """This function adds two integers
-    If the argument b is not passed, a default value of 
+    If the argument b is not passed, a default value of
     98 is used.
 
     Parameters
