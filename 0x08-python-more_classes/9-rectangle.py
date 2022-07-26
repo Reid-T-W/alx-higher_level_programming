@@ -9,8 +9,8 @@ class Rectangle:
 
     def __init__(self, width=0, height=0):
         '''Instantiation with optional width and height'''
-        self.height = height
         self.width = width
+        self.height = height
         Rectangle.number_of_instances += 1
 
     def __repr__(self):
@@ -35,22 +35,6 @@ class Rectangle:
         print("Bye rectangle...")
 
     @property
-    def height(self):
-        '''height Getter'''
-        return self.__height
-
-    @height.setter
-    def height(self, value):
-        '''height Setter'''
-        if (isinstance(value, int)):
-            if (value >= 0):
-                self.__height = value
-            else:
-                raise ValueError('height must be >= 0')
-        else:
-            raise TypeError('height must be an integer')
-
-    @property
     def width(self):
         '''width getter'''
         return self.__width
@@ -65,6 +49,22 @@ class Rectangle:
                 raise ValueError('width must be >= 0')
         else:
             raise TypeError('width must be an integer')
+
+    @property
+    def height(self):
+        '''height Getter'''
+        return self.__height
+
+    @height.setter
+    def height(self, value):
+        '''height setter'''
+        if (isinstance(value, int)):
+            if (value >= 0):
+                self.__height = value
+            else:
+                raise ValueError('height must be >= 0')
+        else:
+            raise TypeError('height must be an integer')
 
     def area(self):
         return (self.__height * self.__width)
