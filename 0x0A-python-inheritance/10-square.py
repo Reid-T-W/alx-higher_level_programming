@@ -4,8 +4,8 @@ Rectangle = __import__('9-rectangle').Rectangle
 
 
 class Square(Rectangle):
+    '''This class inherits from Rectangle and call the subclass methods'''
     def __init__(self, size):
-        '''This class inherits from Rectangle and call the subclass methods'''
         self.integer_validator("width", size)
         self.integer_validator("height", size)
         self.__size = size
