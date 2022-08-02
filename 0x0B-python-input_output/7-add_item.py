@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+'''This script adds arguments to a json file'''
 import sys
 import os.path
 
