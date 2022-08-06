@@ -62,6 +62,15 @@ class Rectangle(Base):
         Rectangle.validate_type(y, "y")
         Rectangle.check_x_y(y, "y")
         self.__y = y
+    
+    def area(self):
+        return(self.__width * self.__height)
+
+    def display(self):
+        for col in range(self.__height):
+            for row in range(self.__width):
+                print('#', end="")
+            print()
 
     @classmethod
     def validate_type(cls, value, caller):
@@ -69,11 +78,11 @@ class Rectangle(Base):
             raise TypeError('{} must be an integer'.format(caller))
     
     @classmethod
-    def check_width_height(self, value, caller):
+    def check_width_height(cls, value, caller):
         if value <= 0:
             raise ValueError('{} must be > 0'.format(caller))
     
     @classmethod
-    def check_x_y(self, value, caller):
+    def check_x_y(cls, value, caller):
         if value < 0:
             raise ValueError('{} must be >= 0'.format(caller))
