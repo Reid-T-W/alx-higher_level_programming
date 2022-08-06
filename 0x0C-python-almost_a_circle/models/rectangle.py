@@ -78,10 +78,26 @@ class Rectangle(Base):
                         print('#', end="")
                 print()
 
+    def update(self, *args):
+        len_arg = len(args)
+        if (len_arg == 0):
+            pass
+        if (len_arg == 1):
+            super().__init__(args[0])
+        if (len_arg == 2):
+            self.width = args[1]
+        if (len_arg == 3):
+            self.height = args[2]
+        if (len_arg == 4):
+            self.x = args[3]
+        if (len_arg == 5):
+            self.y = args[4]
+
     def __str__(self):
         return("[Rectangle] ({}) {}/{} - {}/{}".format(super().id, self.__x, self.__y, self.__width, self.__height))
 
 
+    
     @classmethod
     def validate_type(cls, value, caller):
         if type(value) is not int:
