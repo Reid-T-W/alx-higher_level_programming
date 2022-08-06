@@ -67,10 +67,20 @@ class Rectangle(Base):
         return(self.__width * self.__height)
 
     def display(self):
-        for col in range(self.__height):
-            for row in range(self.__width):
-                print('#', end="")
-            print()
+        for col in range(self.__height + self.__y):
+            if col < self.__y:
+                print()
+            else:
+                for row in range(self.__width + self.__x):
+                    if row < (self.__x):
+                        print(" ", end="")
+                    else:
+                        print('#', end="")
+                print()
+
+    def __str__(self):
+        return("[Rectangle] ({}) {}/{} - {}/{}".format(super().id, self.__x, self.__y, self.__width, self.__height))
+
 
     @classmethod
     def validate_type(cls, value, caller):
