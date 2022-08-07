@@ -78,24 +78,42 @@ class Rectangle(Base):
                         print('#', end="")
                 print()
 
-    def update(self, *args):
-        len_arg = len(args)
-        if (len_arg == 0):
-            pass
-        if (len_arg == 1):
-            super().__init__(args[0])
-        if (len_arg == 2):
-            self.width = args[1]
-        if (len_arg == 3):
-            self.height = args[2]
-        if (len_arg == 4):
-            self.x = args[3]
-        if (len_arg == 5):
-            self.y = args[4]
+    def update(self, *args, **kwargs):
+        if (len(args) != 0):
+            i = 0
+            len_arg = len(args)
+            if (len_arg == 0):
+                return
+            if (i < len_arg):
+                super().__init__(args[0])
+                i = i + 1
+            if (i < len_arg):
+                self.width = args[1]
+                i = i + 1
+            if (i < len_arg):
+                self.height = args[2]
+                i = i + 1
+            if (i < len_arg):
+                self.x = args[3]
+                i = i + 1
+            if (i < len_arg):
+                self.y = args[4]
+        else:
+            for key in kwargs:
+                if key == "id":
+                    super().__init__(kwargs[key])
+                else:
+                    if (key == "width"):
+                        self.width = kwargs[key]
+                    elif (key == "height"):
+                        self.height = kwargs[key]
+                    elif (key == "x"):
+                        self.x = kwargs[key]
+                    elif (key == "y"):
+                        self.y = kwargs[key]
 
     def __str__(self):
         return("[Rectangle] ({}) {}/{} - {}/{}".format(super().id, self.__x, self.__y, self.__width, self.__height))
-
 
     
     @classmethod
