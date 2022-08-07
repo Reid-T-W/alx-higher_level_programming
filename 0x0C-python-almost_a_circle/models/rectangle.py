@@ -112,6 +112,15 @@ class Rectangle(Base):
                     elif (key == "y"):
                         self.y = kwargs[key]
 
+    def to_dictionary(self):
+        shape_dict = {}
+        shape_dict['x'] = self.__x
+        shape_dict['y'] = self.__y
+        shape_dict['id'] = self.id
+        shape_dict['height'] = self.__height
+        shape_dict['width'] = self.__width
+        return shape_dict
+
     def __str__(self):
         return("[Rectangle] ({}) {}/{} - {}/{}".format(super().id, self.__x, self.__y, self.__width, self.__height))
 
