@@ -7,6 +7,7 @@ class Rectangle(Base):
     '''This is a rectangle class that inherits from the Base class'''
 
     def __init__(self, width, height, x=0, y=0, id=None):
+        '''Rectangle initialization method'''
         Rectangle.validate_type(width, "width")
         Rectangle.validate_type(height, "height")
         Rectangle.validate_type(x, "x")
@@ -26,48 +27,58 @@ class Rectangle(Base):
 
     @property
     def width(self):
+        '''width getter'''
         return self.__width
 
     @width.setter
     def width(self, width):
+        '''width setter'''
         Rectangle.validate_type(width, "width")
         Rectangle.check_width_height(width, "width")
         self.__width = width
 
     @property
     def height(self):
+        '''height getter'''
         return self.__height
 
     @height.setter
     def height(self, height):
+        '''height setter'''
         Rectangle.validate_type(height, "height")
         Rectangle.check_width_height(height, "height")
         self.__height = height
 
     @property
     def x(self):
+        '''x getter'''
         return self.__x
 
     @x.setter
     def x(self, x):
+        '''x setter'''
         Rectangle.validate_type(x, "x")
         Rectangle.check_x_y(x, "x")
         self.__x = x
 
     @property
     def y(self):
+        '''y getter'''
         return self.__y
 
     @y.setter
     def y(self, y):
+        '''y setter'''
         Rectangle.validate_type(y, "y")
         Rectangle.check_x_y(y, "y")
         self.__y = y
 
     def area(self):
+        '''area method'''
         return(self.__width * self.__height)
 
     def display(self):
+        '''display method'''
         for col in range(self.__height + self.__y):
             if col < self.__y:
                 print()
@@ -80,6 +91,7 @@ class Rectangle(Base):
                 print()
 
     def update(self, *args, **kwargs):
+        '''update method'''
         if (len(args) != 0):
             i = 0
             len_arg = len(args)
@@ -114,6 +126,7 @@ class Rectangle(Base):
                         self.y = kwargs[key]
 
     def to_dictionary(self):
+        '''to_dictionary method'''
         shape_dict = {}
         shape_dict['x'] = self.__x
         shape_dict['y'] = self.__y
@@ -123,20 +136,24 @@ class Rectangle(Base):
         return shape_dict
 
     def __str__(self):
+        '''__str__ method'''
         return("[Rectangle] ({}) {}/{} - {}/{}".format(super().id,
                self.__x, self.__y, self.__width, self.__height))
 
     @classmethod
     def validate_type(cls, value, caller):
+        '''validate_type class method'''
         if type(value) is not int:
             raise TypeError('{} must be an integer'.format(caller))
 
     @classmethod
     def check_width_height(cls, value, caller):
+        '''check_width_height class method'''
         if value <= 0:
             raise ValueError('{} must be > 0'.format(caller))
 
     @classmethod
     def check_x_y(cls, value, caller):
+        '''check_x_y class method'''
         if value < 0:
             raise ValueError('{} must be >= 0'.format(caller))
