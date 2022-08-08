@@ -4,6 +4,7 @@ from models.base import Base
 from models.rectangle import Rectangle
 '''This moudle contains the test cases for base.py'''
 
+
 class TestBaseInitialize(unittest.TestCase):
     '''This class contains all the tests for base.py'''
     def test_a_idIncrement(self):
@@ -23,12 +24,13 @@ class TestBaseInitialize(unittest.TestCase):
         b5 = Base()
         self.assertEqual(b5.id, 4)
 
+
 class TestRectangleInitialize(unittest.TestCase):
     '''This class contains all the test for rectangle.py'''
     """
     def test_a_noArg(self):
         r0 = Rectangle(0)
-        
+
     def test_b_oneArg(self):
         r1 = Rectangle(1)
     """
@@ -72,70 +74,84 @@ class TestRectangleInitialize(unittest.TestCase):
         result.append(r5.id)
         self.assertListEqual(result, [1, 2, 3, 4, 5])
 
+
 class TestRectangleValidator(unittest.TestCase):
     def test_g_valTypeError(self):
         setter_test = Rectangle(1, 2)
         with self.assertRaises(TypeError):
-            re1 = Rectangle("one", 2)        
+            re1 = Rectangle("one", 2)
+
     def test_h_valTypeError(self):
         setter_test = Rectangle(1, 2)
         with self.assertRaises(TypeError):
             re1 = Rectangle(1, "two")
+
     def test_i_valTypeError(self):
         setter_test = Rectangle(1, 2)
         with self.assertRaises(TypeError):
             re1 = Rectangle(1, 2, "three")
+
     def test_j_valTypeError(self):
         setter_test = Rectangle(1, 2)
         with self.assertRaises(TypeError):
             re1 = Rectangle(1, 2, 3, "four")
+
     def test_k_valTypeError(self):
         setter_test = Rectangle(1, 2)
         with self.assertRaises(TypeError):
             setter_test.width = "one"
+
     def test_l_valTypeError(self):
         setter_test = Rectangle(1, 2)
         with self.assertRaises(TypeError):
             setter_test.height = "one"
+
     def test_m_valTypeError(self):
         setter_test = Rectangle(1, 2)
         with self.assertRaises(TypeError):
             setter_test.x = "one"
+
     def test_n_valTypeError(self):
         setter_test = Rectangle(1, 2)
         with self.assertRaises(TypeError):
             setter_test.y = "one"
+
     def test_o_valValueError(self):
         setter_test = Rectangle(1, 2)
         with self.assertRaises(ValueError):
             re1 = Rectangle(-1, 2)
+
     def test_p_valValueError(self):
         setter_test = Rectangle(1, 2)
         with self.assertRaises(ValueError):
             re1 = Rectangle(1, -12)
+
     def test_q_valValueError(self):
         setter_test = Rectangle(1, 2)
         with self.assertRaises(ValueError):
             re1 = Rectangle(1, 2, -1)
+
     def test_r_valValueError(self):
         setter_test = Rectangle(1, 2)
         with self.assertRaises(ValueError):
             re1 = Rectangle(1, 2, 3, -1)
+
     def test_s_valValueError(self):
         setter_test = Rectangle(1, 2)
         with self.assertRaises(ValueError):
             setter_test.width = -1
+
     def test_t_valValueError(self):
         setter_test = Rectangle(1, 2)
         with self.assertRaises(ValueError):
             setter_test.height = -2
+
     def test_u_valValueError(self):
         setter_test = Rectangle(1, 2)
         with self.assertRaises(ValueError):
             setter_test.x = -3
+
     def test_v_valValueError(self):
         setter_test = Rectangle(1, 2)
         with self.assertRaises(ValueError):
             setter_test.y = -4
-
-
