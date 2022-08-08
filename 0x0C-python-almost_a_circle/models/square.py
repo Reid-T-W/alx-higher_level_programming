@@ -32,11 +32,15 @@ class Square(Rectangle):
 
     def update(self, *args, **kwargs):
         if (len(args) != 0):
+            id_arg = (args[0],)
+            super().update(*id_arg)
             i = 0
-            len_arg = len(args)
+            len_arg = len(args) - 1
+            """
             if (i < len_arg):
-                Base.id = args[0]
+                Base.id = args[1]
                 i = i + 1
+            """
             if (i < len_arg):
                 self.width = args[1]
                 self.height = args[1]
@@ -47,14 +51,7 @@ class Square(Rectangle):
             if (i < len_arg):
                 self.y = args[3]
         else:
-            for key in kwargs:
-                if key == "id":
-                    Base.id = kwargs[key]
-                else:
-                    if (key == "size"):
-                        self.width = kwargs[key]
-                        self.height = kwargs[key]
-                    elif (key == "x"):
-                         self.x = kwargs[key]
-                    elif (key == "y"):
-                        self.y = kwargs[key]
+            super().update(**kwargs)
+            if ("size" in kwargs):
+                self.width = kwargs['size']
+                self.height = kwargs['size']
