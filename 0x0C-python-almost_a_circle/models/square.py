@@ -8,20 +8,24 @@ class Square(Rectangle):
     '''This class inherits from Rectangle class'''
 
     def __init__(self, size, x=0, y=0, id=None):
+        '''Initialize Square'''
         super().__init__(size, size, x, y, id)
 
     @property
     def size(self):
+        '''size getter'''
         return super().width
 
     @size.setter
     def size(self, size):
+        '''size setter'''
         Rectangle.validate_type(size, "width")
         Rectangle.check_width_height(size, "width")
         self.width = size
         self.height = size
 
     def to_dictionary(self):
+        '''to_dictionary method'''
         shape_dict = {}
         shape_dict["id"] = self.id
         shape_dict["x"] = self.x
@@ -30,10 +34,12 @@ class Square(Rectangle):
         return shape_dict
 
     def __str__(self):
+        '''__str__ method'''
         return "[Square] ({}) {}/{} - {}".format(self.id, self.x,
                                                  self.y, self.width)
 
     def update(self, *args, **kwargs):
+        '''update method'''
         if (len(args) != 0):
             id_arg = (args[0],)
             super().update(*id_arg)
