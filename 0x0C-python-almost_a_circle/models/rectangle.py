@@ -5,6 +5,7 @@ from models.base import Base
 
 class Rectangle(Base):
     '''This is a rectangle class that inherits from the Base class'''
+
     def __init__(self, width, height, x=0, y=0, id=None):
         Rectangle.validate_type(width, "width")
         Rectangle.validate_type(height, "height")
@@ -22,7 +23,7 @@ class Rectangle(Base):
         self.__height = height
         self.__x = x
         self.__y = y
-    
+
     @property
     def width(self):
         return self.__width
@@ -62,7 +63,7 @@ class Rectangle(Base):
         Rectangle.validate_type(y, "y")
         Rectangle.check_x_y(y, "y")
         self.__y = y
-    
+
     def area(self):
         return(self.__width * self.__height)
 
@@ -122,19 +123,19 @@ class Rectangle(Base):
         return shape_dict
 
     def __str__(self):
-        return("[Rectangle] ({}) {}/{} - {}/{}".format(super().id, self.__x, self.__y, self.__width, self.__height))
+        return("[Rectangle] ({}) {}/{} - {}/{}".format(super().id,
+               self.__x, self.__y, self.__width, self.__height))
 
-    
     @classmethod
     def validate_type(cls, value, caller):
         if type(value) is not int:
             raise TypeError('{} must be an integer'.format(caller))
-    
+
     @classmethod
     def check_width_height(cls, value, caller):
         if value <= 0:
             raise ValueError('{} must be > 0'.format(caller))
-    
+
     @classmethod
     def check_x_y(cls, value, caller):
         if value < 0:

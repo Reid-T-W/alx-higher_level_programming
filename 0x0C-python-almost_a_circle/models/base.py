@@ -7,12 +7,14 @@ from os.path import exists
 class Base:
     '''This class contains the Base class'''
     __nb_objects = 0
+
     def __init__(self, id=None):
         if id is not None:
             self.__id = id
         else:
             Base.__nb_objects = Base.__nb_objects + 1
             self.__id = Base.__nb_objects
+
     @property
     def id(self):
         return self.__id
@@ -39,7 +41,7 @@ class Base:
     def save_to_file(cls, list_objs):
         dict_obj_list = []
         filename = cls.__name__ + ".json"
-        with open(filename, 'w', encoding = "utf-8") as wFile:
+        with open(filename, 'w', encoding="utf-8") as wFile:
             if ((list_objs is None) or (len(list_objs) == 0)):
                 wFile.write(Base.to_json_string([]))
             else:
@@ -52,10 +54,13 @@ class Base:
     def create(cls, **dictionary):
         if (cls.__name__ == "Rectangle"):
             dummy = cls(11, 13, 15)
-            dummy.update(x=dictionary['x'], y=dictionary['y'], width=dictionary['width'], height=dictionary['height'], id=dictionary['id'])
+            dummy.update(x=dictionary['x'], y=dictionary['y'],
+                         width=dictionary['width'],
+                         height=dictionary['height'], id=dictionary['id'])
         elif (cls.__name__ == "Square"):
             dummy = cls(11, 13)
-            dummy.update(x=dictionary['x'], y=dictionary['y'], size=dictionary['size'], id=dictionary['id'])
+            dummy.update(x=dictionary['x'], y=dictionary['y'],
+                         size=dictionary['size'], id=dictionary['id'])
         return dummy
 
     @classmethod
@@ -63,10 +68,10 @@ class Base:
         instance_list = []
         filename = cls.__name__ + ".json"
         if (exists(filename) is True):
-            with open(filename, 'r', encoding = "utf-8") as rFile:
-               dict_list = Base.from_json_string(rFile.read())
-               for item in dict_list:
-                   instance_list.append(cls.create(**item))
-               return (instance_list)
+            with open(filename, 'r', encoding="utf-8") as rFile:
+                dict_list = Base.from_json_string(rFile.read())
+                for item in dict_list:
+                    instance_list.append(cls.create(**item))
+                return (instance_list)
         else:
             return ([])
