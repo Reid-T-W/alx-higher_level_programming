@@ -19,6 +19,14 @@ class Square(Rectangle):
         self.width = size
         self.height = size
 
+    def to_dictionary(self):
+        shape_dict = {}
+        shape_dict["id"] = self.id
+        shape_dict["x"] = self.x
+        shape_dict["size"] = self.width
+        shape_dict["y"] = self.y
+        return shape_dict
+
     def __str__(self):
         return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width)
 
