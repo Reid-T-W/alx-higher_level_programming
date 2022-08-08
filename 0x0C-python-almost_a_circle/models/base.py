@@ -9,6 +9,7 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
+        '''initialization method'''
         if id is not None:
             self.__id = id
         else:
@@ -17,28 +18,26 @@ class Base:
 
     @property
     def id(self):
+        '''id getter'''
         return self.__id
-
-    """
-    @id.setter
-    def id(self, id):
-        self.__id = id
-        """
 
     @staticmethod
     def to_json_string(list_dictionaries):
+        '''static method to_json_string'''
         if ((list_dictionaries is None) or (len(list_dictionaries) == 0)):
             return("[]")
         return(json.dumps(list_dictionaries))
 
     @staticmethod
     def from_json_string(json_string):
+        '''static method from_json_string'''
         if ((json_string is None) or (len(json_string) == 0)):
             return []
         return(json.loads(json_string))
 
     @classmethod
     def save_to_file(cls, list_objs):
+        '''class method save_to_file'''
         dict_obj_list = []
         filename = cls.__name__ + ".json"
         with open(filename, 'w', encoding="utf-8") as wFile:
@@ -52,6 +51,7 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
+        '''class method create'''
         if (cls.__name__ == "Rectangle"):
             dummy = cls(11, 13, 15)
             dummy.update(x=dictionary['x'], y=dictionary['y'],
@@ -65,6 +65,7 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
+        '''class method load_from_file'''
         instance_list = []
         filename = cls.__name__ + ".json"
         if (exists(filename) is True):
