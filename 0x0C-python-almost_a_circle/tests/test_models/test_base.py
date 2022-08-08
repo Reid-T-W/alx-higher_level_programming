@@ -76,6 +76,7 @@ class TestRectangleInitialize(unittest.TestCase):
 
 
 class TestRectangleValidator(unittest.TestCase):
+    '''TestRectangleValidator class'''
     def test_g_valTypeError(self):
         setter_test = Rectangle(1, 2)
         with self.assertRaises(TypeError):
