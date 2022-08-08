@@ -53,12 +53,12 @@ class Base:
     def create(cls, **dictionary):
         '''class method create'''
         if (cls.__name__ == "Rectangle"):
-            dummy = cls(11, 13, 15)
+            dummy = cls(11, 13)
             dummy.update(x=dictionary['x'], y=dictionary['y'],
                          width=dictionary['width'],
                          height=dictionary['height'], id=dictionary['id'])
         elif (cls.__name__ == "Square"):
-            dummy = cls(11, 13)
+            dummy = cls(11)
             dummy.update(x=dictionary['x'], y=dictionary['y'],
                          size=dictionary['size'], id=dictionary['id'])
         return dummy
