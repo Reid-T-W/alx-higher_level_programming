@@ -90,7 +90,7 @@ class Rectangle(Base):
                         print('#', end="")
                 print()
 
-    def update(self, *args, **kwargs):
+    def update(self, *args, **kwargs): 
         '''update method'''
         if (len(args) != 0):
             i = 0

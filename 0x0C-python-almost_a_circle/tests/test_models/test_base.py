@@ -34,7 +34,7 @@ class TestRectangleInitialize(unittest.TestCase):
     def test_b_oneArg(self):
         r1 = Rectangle(1)
     """
-    def test_c_twoArg(self):
+    def test_d1_twoArg(self):
         result = []
         r2 = Rectangle(1, 2)
         result.append(r2.width)
@@ -44,7 +44,7 @@ class TestRectangleInitialize(unittest.TestCase):
         result.append(r2.id)
         self.assertListEqual(result, [1, 2, 0, 0, 5])
 
-    def test_d_threeArg(self):
+    def test_d2_threeArg(self):
         result = []
         r3 = Rectangle(1, 2, 3)
         result.append(r3.width)
@@ -156,3 +156,14 @@ class TestRectangleValidator(unittest.TestCase):
         setter_test = Rectangle(1, 2)
         with self.assertRaises(ValueError):
             setter_test.y = -4
+
+
+class TestHelperMethods(unittest.TestCase):
+    '''TestHelperMethods class'''
+    def test_w_area(self):
+        setter_test1 = Rectangle(1, 10)
+        self.assertEqual(setter_test1.area(), 10)
+
+    def test_x_area(self):
+        setter_test2 = Rectangle(10, 5)
+        self.assertEqual(setter_test2.area(), 50)

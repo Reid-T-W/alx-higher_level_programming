@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 '''This module contains the base class'''
 import json
+import csv
 from os.path import exists
-
+import turtle
 
 class Base:
     '''This class contains the Base class'''
@@ -92,3 +93,40 @@ class Base:
                 return (instance_list)
         else:
             return ([])
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        '''class method save to csv'''
+        dict_obj_list = []
+        filename = cls.__name__ + ".csv"
+        with open(filename, 'w', encoding="utf-8") as f:
+            if ((list_objs is None) or (len(list_objs) == 0)):
+                write_csv = csv.writer(f)
+                write_csv.writerow(list_objs)
+            else:
+                for obj in list_objs:
+                    dict_obj = obj.to_dictionary()
+                    dict_obj_list.append(dict_obj)
+                write_csv = csv.writer(f)
+                write_csv.writerow(dict_obj_list)
+    @classmethod
+    def load_from_file_csv(cls):
+        '''class method to load from csv'''
+        instance_list = []
+        filename = cls.__name__ + ".csv"
+        if (exists(filename) is True):
+            with open(filename, 'r', encoding = "utf-8") as f:
+                read_csv = csv.reader(f)
+                for row in read_csv:
+                    dict_list = row
+                print(dict_list)
+                for item in dict_list:
+                    instance_list.append(cls.create(**item))
+                return (instance_list)
+        else:
+            return ([])
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        bob = turtle.Turtle()
+
+        turtle.done()
