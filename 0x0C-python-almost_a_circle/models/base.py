@@ -52,15 +52,31 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         '''class method create'''
+        kwargs = {}
         if (cls.__name__ == "Rectangle"):
             dummy = cls(11, 13)
-            dummy.update(x=dictionary['x'], y=dictionary['y'],
-                         width=dictionary['width'],
-                         height=dictionary['height'], id=dictionary['id'])
+            if ('x' in dictionary):
+                kwargs['x'] = dictionary['x']
+            if ('y' in dictionary):
+                kwargs['y'] = dictionary['y']
+            if ('width' in dictionary):
+                kwargs['width'] = dictionary['width']
+            if ('height' in dictionary):
+                kwargs['height'] = dictionary['height']
+            if ('id' in dictionary):
+                kwargs['id'] = dictionary['id']
+            dummy.update(**kwargs)
         elif (cls.__name__ == "Square"):
             dummy = cls(11)
-            dummy.update(x=dictionary['x'], y=dictionary['y'],
-                         size=dictionary['size'], id=dictionary['id'])
+            if ('x' in dictionary):
+                kwargs['x'] = dictionary['x']
+            if ('y' in dictionary):
+                kwargs['y'] = dictionary['y']
+            if ('size' in dictionary):
+                kwargs['size'] = dictionary['size']
+            if ('id' in dictionary):
+                kwargs['id'] = dictionary['id']
+            dummy.update(**kwargs)
         return dummy
 
     @classmethod
