@@ -5,6 +5,7 @@ import csv
 from os.path import exists
 import turtle
 
+
 class Base:
     '''This class contains the Base class'''
     __nb_objects = 0
@@ -93,6 +94,7 @@ class Base:
                 return (instance_list)
         else:
             return ([])
+
     @classmethod
     def save_to_file_csv(cls, list_objs):
         '''class method save to csv'''
@@ -108,13 +110,14 @@ class Base:
                     dict_obj_list.append(dict_obj)
                 write_csv = csv.writer(f)
                 write_csv.writerow(dict_obj_list)
+
     @classmethod
     def load_from_file_csv(cls):
         '''class method to load from csv'''
         instance_list = []
         filename = cls.__name__ + ".csv"
         if (exists(filename) is True):
-            with open(filename, 'r', encoding = "utf-8") as f:
+            with open(filename, 'r', encoding="utf-8") as f:
                 read_csv = csv.reader(f)
                 for row in read_csv:
                     dict_list = row
@@ -128,5 +131,42 @@ class Base:
     @staticmethod
     def draw(list_rectangles, list_squares):
         bob = turtle.Turtle()
+        if (list_rectangles is not None):
+            for inst_rect in list_rectangles:
+                obj_rect = inst_rect
+
+                bob.color("black", "orange")
+                bob.penup()
+                bob.setx(obj_rect.x)
+                bob.sety(obj_rect.y)
+                bob.pendown()
+                bob.begin_fill()
+                bob.forward(obj_rect.width)
+                bob.right(90)
+                bob.forward(obj_rect.height)
+                bob.right(90)
+                bob.forward(obj_rect.width)
+                bob.right(90)
+                bob.forward(obj_rect.height)
+                bob.end_fill()
+
+        if (list_squares is not None):
+            for inst_square in list_squares:
+                obj_square = inst_square
+
+                bob.color("blue", "cyan")
+                bob.penup()
+                bob.setx(obj_square.x)
+                bob.sety(obj_square.y)
+                bob.pendown()
+                bob.begin_fill()
+                bob.forward(obj_square.size)
+                bob.right(90)
+                bob.forward(obj_square.size)
+                bob.right(90)
+                bob.forward(obj_square.size)
+                bob.right(90)
+                bob.forward(obj_square.size)
+                bob.end_fill()
 
         turtle.done()
