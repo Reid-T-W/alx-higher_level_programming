@@ -101,13 +101,14 @@ class Base:
         dict_obj_list = []
         filename = cls.__name__ + ".csv"
         with open(filename, 'w', encoding="utf-8") as f:
-            write_csv = csv.writer(f, quoting = csv.QUOTE_NONNUMERIC)
+            write_csv = csv.writer(f, quoting=csv.QUOTE_NONNUMERIC)
             if ((list_objs is None) or (len(list_objs) == 0)):
                 write_csv.writerow([])
             else:
                 for obj in list_objs:
                     if (cls.__name__ == "Rectangle"):
-                        write_csv.writerow([obj.id, obj.width, obj.height, obj.x, obj.y])
+                        write_csv.writerow([obj.id, obj.width,
+                                            obj.height, obj.x, obj.y])
                     elif (cls.__name__ == "Square"):
                         write_csv.writerow([obj.id, obj.size, obj.x, obj.y])
 
@@ -118,12 +119,14 @@ class Base:
         filename = cls.__name__ + ".csv"
         if (exists(filename) is True):
             with open(filename, 'r', encoding="utf-8") as f:
-                read_csv = csv.reader(f, quoting = csv.QUOTE_NONNUMERIC)
+                read_csv = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
                 for row in read_csv:
                     if (cls.__name__ == "Rectangle"):
-                        temp_obj = cls(int(row[1]), int(row[2]), int(row[3]),int(row[4]), int(row[0]))
+                        temp_obj = cls(int(row[1]), int(row[2]),
+                                       int(row[3]), int(row[4]), int(row[0]))
                     elif (cls.__name__ == "Square"):
-                        temp_obj = cls(int(row[1]), int(row[2]), int(row[3]), int(row[0]))
+                        temp_obj = cls(int(row[1]), int(row[2]),
+                                       int(row[3]), int(row[0]))
                     instance_list.append(temp_obj)
                 return (instance_list)
         else:
