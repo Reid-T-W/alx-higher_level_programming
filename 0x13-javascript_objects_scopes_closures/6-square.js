@@ -13,7 +13,7 @@ class Square extends firstSquare {
       let concat = '';
       for (let i = 0; i < this.height; i++) {
         for (let j = 0; j < this.width; j++) {
-          concat = concat + 'C';
+          concat = concat + c;
         }
         console.log(concat);
         concat = '';
