@@ -7,7 +7,7 @@ class Square extends firstSquare {
   }
 
   charPrint (c) {
-    if (c == null) {
+    if (c == null || c === 'undefined') {
       super.print();
     } else {
       let concat = '';
