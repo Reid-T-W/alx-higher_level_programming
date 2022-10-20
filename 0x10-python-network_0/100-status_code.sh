@@ -1,3 +1,3 @@
 #!/bin/bash
 # Get response status code without piping
-curl -Is -w "%{http_code}" "$1"
+curl -s -o /dev/null -I -w "%{http_code}" "$1"
