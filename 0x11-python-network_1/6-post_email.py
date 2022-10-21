@@ -5,5 +5,6 @@ import sys
 
 
 if __name__ == "__main__":
-    data = {'email': sys.argv[2]}
-    res = requests.get(sys.argv[1], params=data)
+    item = {'email': sys.argv[2]}
+    res = requests.post(sys.argv[1], data=item)
+    print(res.text)
