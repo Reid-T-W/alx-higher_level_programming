@@ -11,5 +11,6 @@ if __name__ == "__main__":
         print("\t- type: {}".format(type(content)).expandtabs(4))
         print("\t- content: {}".format(content).expandtabs(4))
         print("\t- utf8 content: {}".
-              format(content.decode(response.headers.get_content_charset()))
+              format(content.decode('utf-8'))
               .expandtabs(4))
+        print(response.headers)
