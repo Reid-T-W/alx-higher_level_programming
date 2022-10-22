@@ -24,6 +24,6 @@ if __name__ == "__main__":
         sub_dict['date'] = commit.get('commit').get('author').get('date')
         sub_list.append(sub_dict)
     # Sort based on date, latest to oldest
-    sorted_list = sorted(sub_list, key=lambda x: x['date'], reverse=True)
-    for item in sorted_list:
+    # sorted_list = sorted(sub_list, key=lambda x: x['date'], reverse=True)
+    for item in sub_list:
         print("{}: {}".format(item.get('sha'), item.get('name')))
