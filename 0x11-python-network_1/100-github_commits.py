@@ -11,13 +11,13 @@ import sys
 if __name__ == "__main__":
     user = sys.argv[1]
     repo = sys.argv[2]
+    param_data = {'per_page':'10'}
     res = requests.get("https://api.github.com/repos/{}/{}/commits".
-                       format(user, repo))
+                       format(user, repo), params=param_data)
     commits = res.json()
-    keys = ['sha', 'commit', 'author']
     sub_list = []
     sub_dict = {}
-    for commit in commits[-10:]:
+    for commit in commits:
         sub_dict = {}
         sub_dict['sha'] = commit.get('sha')
         sub_dict['name'] = commit.get('commit').get('author').get('name')
