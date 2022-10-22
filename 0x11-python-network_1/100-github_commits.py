@@ -11,7 +11,7 @@ import sys
 if __name__ == "__main__":
     user = sys.argv[1]
     repo = sys.argv[2]
-    param_data = {'per_page':'10'}
+    param_data = {'per_page': '10'}
     res = requests.get("https://api.github.com/repos/{}/{}/commits".
                        format(user, repo), params=param_data)
     commits = res.json()
