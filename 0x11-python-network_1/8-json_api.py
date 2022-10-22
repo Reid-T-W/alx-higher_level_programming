@@ -9,9 +9,16 @@ import sys
 
 
 if __name__ == "__main__":
-    if (sys.argv[2] not None):
-        param_data = {'q': sys.argv[2]}
+    if (len(sys.argv) == 2):
+        param_data = {'q': sys.argv[1]}
     else:
-        param_data = {'q': ''}
-    res = request.get(sys.argv[1], params=param_data)
-    print("{}".format(res.text))
+        param_data = {'q': ""}
+    res = requests.post("http://0.0.0.0:5000/search_user", data=param_data)
+    try:
+        json = res.json()
+        if (len(json) == 0):
+            print("No result")
+        else:
+            print("[{}] {}".format(json.get('id'), json.get('name')))
+    except Exception as exception:
+        print("Not a valid JSON")
