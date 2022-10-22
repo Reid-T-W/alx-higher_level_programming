@@ -11,12 +11,15 @@ import sys
 if __name__ == "__main__":
     user = sys.argv[1]
     repo = sys.argv[2]
-    param_data = {'per_page': '10'}
+    # param_data = {'per_page': '10'}
     res = requests.get("https://api.github.com/repos/{}/{}/commits".
-                       format(user, repo), params=param_data)
+                       format(user, repo))
     commits = res.json()
     sub_list = []
     sub_dict = {}
+    sorted_list = sorted(commits, key=lambda x: x['commit'].
+                         get('author').get('date'), reverse=True)
+    """
     for commit in commits:
         sub_dict = {}
         sub_dict['sha'] = commit.get('sha')
@@ -25,5 +28,7 @@ if __name__ == "__main__":
         sub_list.append(sub_dict)
     # Sort based on date, latest to oldest
     # sorted_list = sorted(sub_list, key=lambda x: x['date'], reverse=True)
-    for item in sub_list:
-        print("{}: {}".format(item.get('sha'), item.get('name')))
+    """
+    for item in sorted_list[0:10]:
+        print("{}: {}".format(item.get('sha'), item.get('commit').
+                              get('author').get('name')))
